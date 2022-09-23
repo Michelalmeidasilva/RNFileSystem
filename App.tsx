@@ -50,7 +50,11 @@ const App = () => {
   const hasDownloadedMedia = async (): Promise<void> => {
     const filePath = DIRECTORY_NAME + '/' + searchFile;
 
+    console.log('search at', filePath);
     const fileFound = filesAtFileSystem?.find((item) => {
+      console.log('name searching', item);
+      console.log('includes ', filePath?.includes(item));
+
       return filePath?.includes(item);
     });
 
@@ -65,6 +69,8 @@ const App = () => {
         await makeDirectory();
 
         var outputPath = DIRECTORY_NAME + '/' + fileName + '.txt';
+
+        console.log(outputPath);
 
         await fs.writeFile(outputPath, 'Lorem ipsum dolor sit amet', 'utf8');
       }
